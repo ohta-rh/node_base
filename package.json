@@ -1,0 +1,26 @@
+{
+  "name": "daily_quiz",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.7",
+    "ejs": "*",
+    "express-partials": "*",
+    "mongoose": "*",
+    "socket.io": "*",
+    "passport": "*",
+    "passport-facebook": "*" ,
+    "passport-twitter": "*",
+    "passport-github": "*",
+    "passport-google-oauth": "*",
+    "passport-linkedin": "*",
+    "mongoose-migrate": "*",
+    "async": "*",
+    "connect-flash": "*",
+    "connect-mongo": "*",
+    "passport-local": "*"
+  }
+}
