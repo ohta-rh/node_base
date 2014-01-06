@@ -61,14 +61,28 @@ var server = http.createServer(app).listen(app.get('port'), function(){
 });
 var io = require('socket.io').listen(server);
 
+// TODO: あとで外部ファイルに
+
 // welcomeメッセージ
 io.sockets.on('connection', function (socket) {
+
   //TODO: ohta データベースへのfetchあり
-  socket.emit('welcome',
-    { data: "Connected!!" }
-  );
+  socket.on('welcome', function(data) {
+    console.log("welcome")
+    socket.emit('action', { data: "hogehoge"})
+    socket.broadcast.emit('action', {data: "data"});
+  });
+
   socket.on('click', function (data) {
     socket.emit('action', {data: data["data"]});
     socket.broadcast.emit('action', {data: data["data"]});
   });
+  // Quize出題
+
+
 });
+
+
+
+// login required
+

@@ -8,13 +8,8 @@ var QuizeViewModel = {
 }
 
 ko.applyBindings(QuizeViewModel);
-
-//websockets
+// websockets
 var socket = io.connect('http://localhost:3000');
-socket.on('welcome', function (data) {
-  QuizeViewModel.title(data["data"])
-  QuizeViewModel.body(data["data"])
-});
 
 socket.on('action', function(data) {
   console.log("action")
@@ -28,3 +23,13 @@ var click_handler = function(){
   socket.emit('click', {data: $('#txt-word').val()});
 }
 $('#btn-click').click(click_handler);
+
+var onload_handler = function(){
+  console.log("onload")
+  socket.emit('welcome', function (data) {
+    QuizeViewModel.title(data["data"])
+    QuizeViewModel.body(data["data"])
+  });
+}
+
+window.onload = onload_handler;
