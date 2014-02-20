@@ -9,19 +9,14 @@ var fs = require('fs')
 var passport = require('passport')
 var flash = require('connect-flash');
 
+
 // Load configurations
 // if test env, load example file
 var env = process.env.NODE_ENV || 'development'
   , config = require('./config/config')[env]
   , mongoose = require('mongoose')
 
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
-
-// Bootstrap db connection
-// Connect to mongodb
+/* Using mongo db
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } }
   mongoose.connect(config.db, options)
@@ -37,6 +32,7 @@ mongoose.connection.on('error', function (err) {
 mongoose.connection.on('disconnected', function () {
   connect()
 })
+*/
 
 // Bootstrap models
 var models_path = __dirname + '/app/models'
